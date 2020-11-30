@@ -102,10 +102,10 @@ find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty
 echo "!!!!!!!!!!!!!!!!!!!!!!!"
 
 rm -rf "$BUILD_DIR/.apt/etc"
-#rm -rf "$BUILD_DIR/.apt/bin"
-#rm -rf "$BUILD_DIR/.apt/lib"
-#rm -rf "$BUILD_DIR/.apt/lib64"
-#rm -rf "$BUILD_DIR/.apt/sbin"
-#rm -rf "$BUILD_DIR/.apt/var"
+rm -rf "$BUILD_DIR/.apt/bin"
+rm -rf "$BUILD_DIR/.apt/lib"
+rm -rf "$BUILD_DIR/.apt/lib64"
+rm -rf "$BUILD_DIR/.apt/sbin"
+rm -rf "$BUILD_DIR/.apt/var"
 
 ls -lR $BUILD_DIR

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-cat detect
+cat $0
 
 ## fail fast
 #set -e

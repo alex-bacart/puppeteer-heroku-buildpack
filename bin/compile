@@ -54,7 +54,6 @@ esac
 
 topic "Updating apt caches"
 apt-get $APT_OPTIONS update | indent
-apt-get install tree -y | indent
 
 for PACKAGE in $PACKAGES; do
   if [[ $PACKAGE == *deb ]]; then
@@ -105,4 +104,4 @@ echo "$BUILD_DIR"
 echo "$APT_CACHE_DIR"
 echo "$APT_APT_STATE_DIR"
 
-tree /tmp
+ls -lR /tmp

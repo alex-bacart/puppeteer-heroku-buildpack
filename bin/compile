@@ -3,9 +3,13 @@
 
 BUILD_DIR=$1
 
-mkdir -p $BUILD_DIR/.apt/usr/lib
+mkdir -p "$BUILD_DIR/.apt/usr/lib"
 
-tar xvfz archive.tar.gz -C $BUILD_DIR/.apt/usr/lib
+tar xvfz archive.tar.gz -C "$BUILD_DIR/.apt/usr/lib"
+
+cd "$BUILD_DIR/.apt/usr/lib" || return
+
+ls -l
 
 ## fail fast
 #set -e

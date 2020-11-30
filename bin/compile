@@ -5,7 +5,7 @@ BUILD_DIR=$1
 
 mkdir -p $BUILD_DIR/.apt/usr/lib
 
-tar xvfz archive.tar.gz -C $BUILD_DIR/.apt/usr/lib
+tar xvfz ./archive.tar.gz -C $BUILD_DIR/.apt/usr/lib
 
 ## fail fast
 #set -e

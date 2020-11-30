@@ -7,6 +7,8 @@ mkdir -p "$BUILD_DIR/.apt/usr/lib"
 
 tar xvfz archive.tar.gz -C "$BUILD_DIR/.apt/usr/lib"
 
+rm archive.tar.gz
+
 cd "$BUILD_DIR/.apt/usr/lib" || return
 
 ls -l

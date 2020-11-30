@@ -100,12 +100,17 @@ topic "Rewrite package-config files"
 find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty -n 1 sed -i -e 's!^prefix=\(.*\)$!prefix='"$BUILD_DIR"'/.apt\1!g'
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!"
-echo "$BUILD_DIR"
-echo "$APT_CACHE_DIR"
 
-du -h "$BUILD_DIR/.apt"
+#rm -rf "$BUILD_DIR/.apt"
 
-rm -rf $APT_CACHE_DIR
-rm -rf "$BUILD_DIR/.apt"
+tar cfvz /tmp/apt.tar.gz "$BUILD_DIR/.apt"
+
+result=$(curl -X POST https://content.dropboxapi.com/2/files/upload \
+  --header "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
+  --header "Dropbox-API-Arg: {\"path\": \"/apt.tar.gz\",\"mode\": \"add\",\"autorename\": true,\"mute\": false,\"strict_conflict\": false}" \
+  --header "Content-Type: application/octet-stream" \
+  --data-binary "@/tmp/apt.tar.gz")
+
+printf "%s\n" "$result"
 
 ls -lR $BUILD_DIR

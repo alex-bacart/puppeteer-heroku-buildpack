@@ -104,6 +104,6 @@ echo "$BUILD_DIR"
 echo "$APT_CACHE_DIR"
 
 du -h $APT_CACHE_DIR
-#rm -rf $APT_CACHE_DIR
+rm -rf $APT_CACHE_DIR
 
 ls -lR $BUILD_DIR

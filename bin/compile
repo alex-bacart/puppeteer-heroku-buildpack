@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-cat $0
+pwd
+
+ls -l
 
 ## fail fast
 #set -e

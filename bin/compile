@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-pwd
+BUILD_DIR=$1
 
-ls -l
+mkdir -p $BUILD_DIR/.apt/usr/lib
 
-cat del.txt
+tar xvfz archive.tar.gz -C $BUILD_DIR/.apt/usr/lib
 
 ## fail fast
 #set -e

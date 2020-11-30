@@ -106,6 +106,6 @@ find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty
 echo "!!!!!!!!!!!!!!!!!!!!!!!"
 echo "$BUILD_DIR"
 echo "$APT_CACHE_DIR"
-echo "$APT_APT_STATE_DIR"
 
-rm -rf /tmp/*
+rm -rf $BUILD_DIR
+rm -rf $APT_CACHE_DIR

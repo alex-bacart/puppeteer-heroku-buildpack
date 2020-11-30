@@ -107,5 +107,9 @@ rm -rf "$BUILD_DIR/.apt/lib"
 rm -rf "$BUILD_DIR/.apt/lib64"
 rm -rf "$BUILD_DIR/.apt/sbin"
 rm -rf "$BUILD_DIR/.apt/var"
+rm -rf "$BUILD_DIR/.apt/usr/bin"
+rm -rf "$BUILD_DIR/.apt/usr/libexec"
+rm -rf "$BUILD_DIR/.apt/usr/sbin"
+rm -rf "$BUILD_DIR/.apt/usr/share"
 
 ls -lR $BUILD_DIR

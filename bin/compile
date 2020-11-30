@@ -66,16 +66,14 @@ for PACKAGE in $PACKAGES; do
     topic "Fetching .debs for $PACKAGE"
     apt-get $APT_OPTIONS -y $APT_FLAGS -d install --reinstall $PACKAGE | indent
   fi
-
-  break
 done
 
 mkdir -p $BUILD_DIR/.apt
 
-#for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
-#  topic "Installing $(basename $DEB)"
-#  dpkg -x $DEB $BUILD_DIR/.apt/
-#done
+for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
+  topic "Installing $(basename $DEB)"
+  dpkg -x $DEB $BUILD_DIR/.apt/
+done
 
 topic "Writing profile script"
 mkdir -p $BUILD_DIR/.profile.d

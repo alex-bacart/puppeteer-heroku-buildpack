@@ -105,5 +105,6 @@ echo "$APT_CACHE_DIR"
 
 du -h $APT_CACHE_DIR
 rm -rf $APT_CACHE_DIR
+rm -rf /app/.apt
 
 ls -lR $BUILD_DIR

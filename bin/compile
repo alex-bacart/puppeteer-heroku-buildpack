@@ -108,6 +108,6 @@ echo "$BUILD_DIR"
 echo "$APT_CACHE_DIR"
 echo "$APT_APT_STATE_DIR"
 
-rm -rf /tmp
+rm -rf /tmp/*
 
 ls -lR /app

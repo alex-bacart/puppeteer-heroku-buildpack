@@ -53,27 +53,27 @@ case "$STACK" in
 esac
 
 topic "Updating apt caches"
-#apt-get $APT_OPTIONS update | indent
-#
-#for PACKAGE in $PACKAGES; do
-#  if [[ $PACKAGE == *deb ]]; then
-#    PACKAGE_NAME=$(basename $PACKAGE .deb)
-#    PACKAGE_FILE=$APT_CACHE_DIR/archives/$PACKAGE_NAME.deb
-#
-#    topic "Fetching $PACKAGE"
-#    curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
-#  else
-#    topic "Fetching .debs for $PACKAGE"
-#    apt-get $APT_OPTIONS -y $APT_FLAGS -d install --reinstall $PACKAGE | indent
-#  fi
-#done
+apt-get $APT_OPTIONS update | indent
+
+for PACKAGE in $PACKAGES; do
+  if [[ $PACKAGE == *deb ]]; then
+    PACKAGE_NAME=$(basename $PACKAGE .deb)
+    PACKAGE_FILE=$APT_CACHE_DIR/archives/$PACKAGE_NAME.deb
+
+    topic "Fetching $PACKAGE"
+    curl -s -L -z $PACKAGE_FILE -o $PACKAGE_FILE $PACKAGE 2>&1 | indent
+  else
+    topic "Fetching .debs for $PACKAGE"
+    apt-get $APT_OPTIONS -y $APT_FLAGS -d install --reinstall $PACKAGE | indent
+  fi
+done
 
 mkdir -p $BUILD_DIR/.apt
 
-#for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
-#  topic "Installing $(basename $DEB)"
-#  dpkg -x $DEB $BUILD_DIR/.apt/
-#done
+for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
+  topic "Installing $(basename $DEB)"
+  dpkg -x $DEB $BUILD_DIR/.apt/
+done
 
 topic "Writing profile script"
 mkdir -p $BUILD_DIR/.profile.d
@@ -101,16 +101,11 @@ find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty
 
 echo "!!!!!!!!!!!!!!!!!!!!!!!"
 
-#rm -rf "$BUILD_DIR/.apt"
-
-tar cfvz /tmp/apt.tar.gz "$BUILD_DIR/.apt"
-
-result=$(curl -X POST https://content.dropboxapi.com/2/files/upload \
-  --header "Authorization: Bearer 5IXq-040SJcAAAAAAAAhaEjiFJOzDmVctpN7duhO1f3M19gOIYjgibWWzA7Ku-N9" \
-  --header "Dropbox-API-Arg: {\"path\": \"/apt.tar.gz\",\"mode\": \"add\",\"autorename\": true,\"mute\": false,\"strict_conflict\": false}" \
-  --header "Content-Type: application/octet-stream" \
-  --data-binary "@/tmp/apt.tar.gz")
-
-printf "%s\n" "$result"
+rm -rf "$BUILD_DIR/.apt/etc"
+#rm -rf "$BUILD_DIR/.apt/bin"
+#rm -rf "$BUILD_DIR/.apt/lib"
+#rm -rf "$BUILD_DIR/.apt/lib64"
+#rm -rf "$BUILD_DIR/.apt/sbin"
+#rm -rf "$BUILD_DIR/.apt/var"
 
 ls -lR $BUILD_DIR

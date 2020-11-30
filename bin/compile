@@ -66,6 +66,8 @@ for PACKAGE in $PACKAGES; do
     topic "Fetching .debs for $PACKAGE"
     apt-get $APT_OPTIONS -y $APT_FLAGS -d install --reinstall $PACKAGE | indent
   fi
+
+  break
 done
 
 mkdir -p $BUILD_DIR/.apt
@@ -73,6 +75,8 @@ mkdir -p $BUILD_DIR/.apt
 for DEB in $(ls -1 $APT_CACHE_DIR/archives/*.deb); do
   topic "Installing $(basename $DEB)"
   dpkg -x $DEB $BUILD_DIR/.apt/
+
+  break
 done
 
 topic "Writing profile script"
@@ -104,4 +108,6 @@ echo "$BUILD_DIR"
 echo "$APT_CACHE_DIR"
 echo "$APT_APT_STATE_DIR"
 
-ls -lR /tmp
+rm -rf /tmp
+
+ls -lR /app

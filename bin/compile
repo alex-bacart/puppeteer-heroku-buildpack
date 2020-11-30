@@ -103,8 +103,9 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!"
 echo "$BUILD_DIR"
 echo "$APT_CACHE_DIR"
 
-du -h $APT_CACHE_DIR
+du -h "$BUILD_DIR/.apt"
+
 rm -rf $APT_CACHE_DIR
-rm -rf /app/.apt
+rm -rf "$BUILD_DIR/.apt"
 
 ls -lR $BUILD_DIR

@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-ls -lR / > /tmp/before.csv
+apt-get update
+apt-get install -y tree
+
+tree / > /tmp/before.csv
 
 ## fail fast
 #set -e

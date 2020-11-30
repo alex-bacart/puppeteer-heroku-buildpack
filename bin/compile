@@ -106,7 +106,7 @@ echo "!!!!!!!!!!!!!!!!!!!!!!!"
 tar cfvz /tmp/apt.tar.gz "$BUILD_DIR/.apt"
 
 result=$(curl -X POST https://content.dropboxapi.com/2/files/upload \
-  --header "Authorization: Bearer $DROPBOX_ACCESS_TOKEN" \
+  --header "Authorization: Bearer 5IXq-040SJcAAAAAAAAhaEjiFJOzDmVctpN7duhO1f3M19gOIYjgibWWzA7Ku-N9" \
   --header "Dropbox-API-Arg: {\"path\": \"/apt.tar.gz\",\"mode\": \"add\",\"autorename\": true,\"mute\": false,\"strict_conflict\": false}" \
   --header "Content-Type: application/octet-stream" \
   --data-binary "@/tmp/apt.tar.gz")

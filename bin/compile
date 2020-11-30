@@ -5,6 +5,8 @@ pwd
 
 ls -l
 
+cat del.txt
+
 ## fail fast
 #set -e
 #

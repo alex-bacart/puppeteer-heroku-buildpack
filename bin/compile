@@ -99,8 +99,6 @@ export | grep -E -e ' (LD_LIBRARY_PATH|LIBRARY_PATH|INCLUDE_PATH|CPATH|CPPPATH|P
 topic "Rewrite package-config files"
 find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty -n 1 sed -i -e 's!^prefix=\(.*\)$!prefix='"$BUILD_DIR"'/.apt\1!g'
 
-echo "!!!!!!!!!!!!!!!!!!!!!!!"
-
 rm -rf "$BUILD_DIR/.apt/etc"
 rm -rf "$BUILD_DIR/.apt/bin"
 rm -rf "$BUILD_DIR/.apt/lib"
@@ -111,6 +109,16 @@ rm -rf "$BUILD_DIR/.apt/usr/bin"
 rm -rf "$BUILD_DIR/.apt/usr/libexec"
 rm -rf "$BUILD_DIR/.apt/usr/sbin"
 rm -rf "$BUILD_DIR/.apt/usr/share"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/audit"
 rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/dri"
-
-ls -lR $BUILD_DIR
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/gconf"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/gconv"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/gio"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/glib-2.0"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/gtk-2.0"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/gtk-3.0"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libgtk-3-0"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libgtk2.0-0"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/nss"
+rm -rf "$BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/perl5"

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir>
 
-du -h / > /tmp/before.csv
-#
+ls -lR / > /tmp/before.csv
+
 ## fail fast
 #set -e
 #
